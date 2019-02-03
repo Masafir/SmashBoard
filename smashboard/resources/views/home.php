@@ -1,14 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SmashBoard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-</head>
-<body>
+<?php require('layout/header.php'); ?>
     LA home
-</body>
-</html>
+    <div class="container-fluid">
+    <div class="row justify-content-center">
+    <?php 
+    $row = 0;
+    foreach($characters as $character):
+        
+        if($row == 3)
+        {
+            echo '</div><div class="row justify-content-center">';
+            $row = 0;
+            ?>
+            <div class="charact col-4  justify-content-center">
+                <img src="<?=route('home')?>/charac/<?=$character->id?>.png" alt="<?=$character->name ?>">
+            </div>
+            <?php
+        } 
+        else {
+        
+    ?>
+    <div class="charact col-4  justify-content-center">
+    <img src="<?=route('home')?>/charac/<?=$character->id?>.png" class="character" alt="<?=$character->name ?>">
+    </div>
+        <?php }
+        $row ++;
+        endforeach; ?>
+    </div>
+<?php require('layout/footer.php'); ?>
